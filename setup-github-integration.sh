@@ -6,7 +6,7 @@ set -e
 echo "🚀 Setting up GitHub Integration"
 echo "================================="
 
-GITHUB_TOKEN="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"
+GITHUB_TOKEN="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 REPO_NAME="binance-enhanced"
 USERNAME="S7cret"  # Замените на ваш GitHub username
 

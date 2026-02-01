@@ -2,7 +2,7 @@
 
 ## 🔐 **ВАЖНО: Токен компрометирован!**
 
-Токен `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` был отправлен в открытом виде в чат. 
+Токен `ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` был отправлен в открытом виде в чат. 
 
 ### 🚨 **Немедленные действия:**
 
@@ -10,14 +10,14 @@
    ```bash
    # Используйте GitHub API для отзыва
    curl -X DELETE \
-     -H "Authorization: token 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" \
+     -H "Authorization: token ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
      "https://api.github.com/applications/CLIENT_ID/token" \
-     -d '{"access_token":"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"}'
+     -d '{"access_token":"ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}'
    ```
 
 2. **Или через веб-интерфейс:**
    - Зайдите на: **https://github.com/settings/tokens**
-   - Найдите токен `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`
+   - Найдите токен `ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
    - Нажмите **"Delete"**
 
 3. **Создайте новый токен:**
@@ -30,7 +30,7 @@
 ### **Вариант A: Использовать существующий токен (небезопасно)**
 ```bash
 # НЕ РЕКОМЕНДУЕТСЯ, но если нужно срочно:
-./setup-github-secure.sh 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 S7cret
+./setup-github-secure.sh ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx S7cret
 ```
 
 ### **Вариант B: Создать новый токен и настроить**
@@ -154,6 +154,6 @@ curl -s -H "Authorization: token YOUR_TOKEN" \
 
 ---
 
-**⚠️ ВАЖНО:** Токен `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` должен быть отозван немедленно!
+**⚠️ ВАЖНО:** Токен `ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` должен быть отозван немедленно!
 
 **Рекомендую:** Создать новый токен с ограниченными правами и использовать SSH ключи для долгосрочного доступа.

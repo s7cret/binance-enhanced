@@ -12,7 +12,7 @@ if [ -z "$1" ]; then
     echo "Usage: ./setup-github-secure.sh <github-token> [username]"
     echo ""
     echo "Your token starts with: ghp_L6voLFFv..."
-    echo "Please run: ./setup-github-secure.sh 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 S7cret"
+    echo "Please run: ./setup-github-secure.sh ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx S7cret"
     exit 1
 fi
 
