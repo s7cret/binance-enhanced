@@ -1,4 +1,4 @@
-# Binance Enhanced Skill for OpenClaw
+# Binance Enhanced Skill for OpenClaw 🇷🇺
 
 ![OpenClaw](https://img.shields.io/badge/OpenClaw-Skill-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -8,6 +8,8 @@
 **Улучшенный навык для торговли на Binance с полной инфраструктурой безопасности, мониторинга и автоматизации.**
 
 > ⚡ **Создано 8 параллельными агентами за 20 минут** с использованием архитектуры OpenClaw
+> 
+> 🇬🇧 **English version:** [README_EN.md](README_EN.md) | 🇷🇺 **Русская версия:** [README.md](README.md)
 
 ## 🎯 Особенности
 

@@ -1,7 +1,7 @@
 {
   "name": "binance-enhanced",
   "version": "2.0.0",
-  "description": "Enhanced Binance trading skill for OpenClaw with security, monitoring, automation, and natural language interface",
+  "description": "Enhanced Binance trading skill for OpenClaw with security, monitoring, automation, and natural language interface (English/Russian support)",
   "author": "OpenClaw Community",
   "license": "MIT",
   "repository": {
@@ -99,8 +99,11 @@
     }
   },
   "files": [
+    "SKILL_EN.md",
     "SKILL.md",
+    "README_EN.md",
     "README.md",
+    "DOCUMENTATION.md",
     "FAQ.md",
     "TROUBLESHOOTING.md",
     "BEST_PRACTICES.md",
