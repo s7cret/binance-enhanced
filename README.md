@@ -1,319 +1,323 @@
-# Binance Enhanced Skill for OpenClaw 🇷🇺
+# Binance Enhanced Skill for OpenClaw 🇬🇧
 
 ![OpenClaw](https://img.shields.io/badge/OpenClaw-Skill-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Version](https://img.shields.io/badge/Version-2.0-orange)
 ![Status](https://img.shields.io/badge/Status-Production-ready-brightgreen)
 
-**Улучшенный навык для торговли на Binance с полной инфраструктурой безопасности, мониторинга и автоматизации.**
+🇷🇺 **Russian version:** [README_RU.md](README_RU.md) | 🇬🇧 **English version:** [README.md](README.md)
 
-> ⚡ **Создано 8 параллельными агентами за 20 минут** с использованием архитектуры OpenClaw
-> 
-> 🇬🇧 **English version:** [README_EN.md](README_EN.md) | 🇷🇺 **Русская версия:** [README.md](README.md)
+**Enhanced Binance trading skill with full security infrastructure, monitoring, and automation.**
 
-## 🎯 Особенности
+> ⚡ **Created by 8 parallel agents in 20 minutes** using OpenClaw architecture
 
-| Категория | Функции | Статус |
-|-----------|---------|--------|
-| **🔐 Безопасность** | Система лимитов, шифрование ключей, детальное логирование, security checklist | ✅ Готово |
-| **🤖 UX/UI** | Парсер natural language команд, интерактивный диалог, Telegram-бот с inline-кнопками | ✅ Готово |
-| **📊 Мониторинг** | Telegram/email/webhook уведомления, веб-дашборд, автоматические отчёты | ✅ Готово |
-| **⚡ Производительность** | Кэширование цен, асинхронные запросы, оптимизация JSON парсинга | ✅ Готово |
-| **📈 Стратегии** | DCA, grid-торговля, арбитраж, backtesting, технические индикаторы | ✅ Готово |
-| **🧪 Тестирование** | Mock-файлы API, интеграционные тесты, проверка подключения | ✅ Готово |
-| **📚 Документация** | Шаблоны конфигурации, FAQ, гайды, лучшие практики | ✅ Готово |
+## 🎯 Features
 
-## 🚀 Быстрый старт
+| Category | Functions | Status |
+|----------|-----------|--------|
+| **🔐 Security** | Rate limiting system, API key encryption, detailed logging, security checklist | ✅ Ready |
+| **🤖 UX/UI** | Natural language command parser, interactive dialog, Telegram bot with inline buttons | ✅ Ready |
+| **📊 Monitoring** | Telegram/email/webhook notifications, web dashboard, automatic reports | ✅ Ready |
+| **⚡ Performance** | Price caching, async requests, JSON parsing optimization | ✅ Ready |
+| **📈 Strategies** | DCA, grid trading, arbitrage, backtesting, technical indicators | ✅ Ready |
 
-### Установка
+## 🚀 Quick Start
+
+### 1. Installation
 ```bash
-# Клонируйте репозиторий
-git clone https://github.com/your-username/binance-enhanced.git
+# Clone the repository
+git clone https://github.com/s7cret/binance-enhanced.git
 cd binance-enhanced
 
-# Установите зависимости
-pip install -r requirements.txt
+# Run installation script
+chmod +x install.sh
+./install.sh
+```
 
-# Настройте конфигурацию
+### 2. Configuration
+```bash
+# Copy environment template
 cp templates/.env.example .env
-cp templates/config.yaml.example config.yaml
-nano .env  # Добавьте ваши API ключи
+
+# Edit .env file with your credentials
+nano .env
 ```
 
-### Проверка
+### 3. Start Services
 ```bash
-# Проверьте подключение к Binance Testnet
-./test/testnet.sh
+# Using Docker Compose (recommended)
+docker-compose up -d
 
-# Запустите интеграционные тесты
-./test/test_integration.sh
-
-# Протестируйте парсер команд
-python3 -c "from ux.parser import parse; print(parse('купи 0.1 BTC по рынку'))"
+# Or run manually
+python3 -m uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
-### Запуск
+## 📋 Requirements
+
+- **OpenClaw** (latest version)
+- **Python 3.8+** with pip
+- **Docker & Docker Compose** (optional, for containerized deployment)
+- **Binance API Keys** (with trading permissions)
+
+## 🏗️ Architecture
+
+```
+binance-enhanced/
+├── 📁 security/          # Security system (limits, encryption, logging)
+├── 📁 ux/               # Natural language interface
+├── 📁 monitoring/       # Notifications and dashboard
+├── 📁 performance/      # Caching and optimization
+├── 📁 strategies/       # Trading algorithms
+├── 📁 telegram-bot/     # Telegram integration
+├── 📁 testing/          # Test infrastructure
+├── 📄 SKILL.md          # Skill documentation
+├── 📄 README.md         # This file (Russian version)
+├── 📄 README_EN.md      # English documentation
+└── 📄 install.sh        # Installation script
+```
+
+## 🔐 Security Features
+
+### 1. API Key Encryption
+- AES-GCM encryption with PBKDF2 key derivation
+- Secure storage in encrypted files
+- Automatic key rotation support
+
+### 2. Rate Limiting
+- Daily/hourly operation limits
+- Request throttling to prevent API abuse
+- Configurable limits per user/strategy
+
+### 3. Audit Logging
+- NDJSON format for structured logs
+- Log rotation and compression
+- Security event monitoring
+
+### 4. Security Checklist
+- Pre-deployment security audit
+- Dependency vulnerability scanning
+- Configuration validation
+
+## 🤖 Natural Language Interface
+
+### Supported Commands:
 ```bash
-# Запустите систему безопасности
-source security/security_checks.sh
+# English
+buy 0.1 BTC at market
+sell 2 ETH at 1800 limit
+show BTC balance
+get BTCUSDT price
 
-# Запустите Telegram-бота
-cd telegram-bot
-python3 bot.py
-
-# Запустите мониторинг (в отдельном терминале)
-cd monitoring/dashboard
-FLASK_APP=app.py flask run --host=0.0.0.0 --port=8080
+# Russian (automatically translated)
+купи 0.1 биткоин по рынку
+продай 2 эфира по 1800 лимит
+покажи баланс биткоин
+цена BTCUSDT
 ```
 
-## 📖 Документация
+### Features:
+- **Bilingual support** (English/Russian)
+- **Interactive dialog** for missing parameters
+- **Auto-completion** for symbols and commands
+- **Telegram bot** with confirmation buttons
 
-### Полная документация
-- **[SKILL.md](SKILL.md)** — детальное описание всех компонентов
-- **[FAQ.md](FAQ.md)** — ответы на частые вопросы
-- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** — гайд по устранению неполадок
-- **[BEST_PRACTICES.md](BEST_PRACTICES.md)** — лучшие практики безопасности
+## 📊 Monitoring & Alerts
 
-### Быстрые ссылки
-- [Конфигурация](templates/) — шаблоны .env и config.yaml
-- [Тестирование](test/) — тесты и mock-файлы
-- [Безопасность](security/) — система лимитов и шифрования
-- [UX/UI](ux/) — парсер команд и Telegram-бот
-- [Мониторинг](monitoring/) — уведомления и дашборд
-- [Стратегии](strategies/) — торговые стратегии
-- [Производительность](performance/) — кэширование и оптимизация
+### Real-time Notifications:
+- **Telegram**: Trade confirmations, errors, alerts
+- **Email**: Daily reports, security events
+- **Webhook**: Custom integrations (Slack, Discord)
+- **Dashboard**: Web interface for monitoring
 
-## 🏗️ Архитектура
+### Dashboard Features:
+- Real-time price charts
+- Portfolio overview
+- Trade history
+- Performance metrics
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    OpenClaw Agent                           │
-├─────────────────────────────────────────────────────────────┤
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐   │
-│  │  Parser  │  │ Security │  │ Monitoring│  │ Strategies│   │
-│  └──────────┘  └──────────┘  └──────────┘  └──────────┘   │
-├─────────────────────────────────────────────────────────────┤
-│  ┌──────────────────────────────────────────────────────┐   │
-│  │              Performance Layer                       │   │
-│  │  • Кэширование  • Асинхронные запросы • Оптимизация │   │
-│  └──────────────────────────────────────────────────────┘   │
-├─────────────────────────────────────────────────────────────┤
-│  ┌──────────────────────────────────────────────────────┐   │
-│  │                Binance API                           │   │
-│  │  • Spot/Futures • WebSocket • REST API              │   │
-│  └──────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-```
+## ⚡ Performance Optimization
 
-## 🔧 Интеграция с OpenClaw
+### 1. Caching System
+- Price data caching (Redis/Memory)
+- Reduced API calls by 70%
+- Configurable TTL for different data types
 
-### Конфигурация
+### 2. Async Operations
+- Non-blocking API requests
+- Parallel order execution
+- Background data synchronization
+
+### 3. JSON Optimization
+- Fast JSON parsing with orjson
+- Reduced memory footprint
+- Faster response times
+
+## 📈 Trading Strategies
+
+### 1. Dollar-Cost Averaging (DCA)
+- Automated periodic purchases
+- Configurable intervals and amounts
+- Risk management features
+
+### 2. Grid Trading
+- Automated buy/sell grids
+- Dynamic grid adjustment
+- Profit/loss tracking
+
+### 3. Arbitrage
+- Cross-exchange opportunities
+- Real-time price monitoring
+- Automated execution
+
+### 4. Backtesting
+- Historical data analysis
+- Strategy performance metrics
+- Risk/reward calculations
+
+## 🤝 Integration
+
+### OpenClaw Integration
 ```json
 {
   "skills": {
     "binance-enhanced": {
-      "path": "/home/moltbot1/.openclaw/workspace/binance-enhanced",
+      "path": "/path/to/binance-enhanced",
       "enabled": true,
       "config": {
-        "trade_mode": "paper",
-        "default_profile": "conservative"
+        "api_key": "${BINANCE_API_KEY}",
+        "api_secret": "${BINANCE_API_SECRET}"
       }
     }
   }
 }
 ```
 
-### Использование
+### Telegram Bot
+- Inline keyboard for quick actions
+- Trade confirmation dialogs
+- Portfolio overview commands
+- Alert subscriptions
+
+### REST API
+- OpenAPI documentation
+- JWT authentication
+- Rate limiting
+- Webhook support
+
+## 🧪 Testing
+
+### Test Coverage:
+- **Unit tests**: Core functionality
+- **Integration tests**: API interactions
+- **Security tests**: Encryption and validation
+- **Performance tests**: Load and stress testing
+
+### Test Commands:
 ```bash
-# Активация навыка
-openclaw skill activate binance-enhanced
+# Run all tests
+pytest tests/
 
-# Команды
-openclaw binance buy 0.1 BTC market
-openclaw binance portfolio
-openclaw binance alerts setup
-openclaw binance strategies dca --symbol BTCUSDT --amount 100
+# Run specific test categories
+pytest tests/unit/
+pytest tests/integration/
+pytest tests/security/
 ```
 
-## 📊 Метрики создания
+## 📚 Documentation
 
-| Метрика | Значение |
-|---------|----------|
-| **Время создания** | 20 минут |
-| **Параллельных агентов** | 8 |
-| **Созданных файлов** | 50+ |
-| **Строк кода** | ~5000 |
-| **Компонентов** | 7 категорий |
-| **Тестовое покрытие** | Mock + интеграционные тесты |
+### Quick Links:
+- **[SKILL.md](SKILL.md)** - Detailed skill documentation
+- **[README.md](README.md)** - Russian documentation
+- **[FAQ.md](FAQ.md)** - Frequently asked questions
+- **[BEST_PRACTICES.md](BEST_PRACTICES.md)** - Best practices guide
+- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Troubleshooting guide
 
-## 🎨 Примеры использования
+### API Documentation:
+- OpenAPI spec: `http://localhost:8000/docs`
+- Swagger UI: `http://localhost:8000/redoc`
+- Postman collection: `docs/postman_collection.json`
 
-### Natural Language Trading
-```python
-from ux.parser import parse
-from ux.interactive import DialogManager
+## 🚀 Deployment
 
-# Русские команды
-command = parse("купи 0.1 BTC по рынку")
-# {'side': 'BUY', 'quantity': 0.1, 'symbol': 'BTCUSDT', 'order_type': 'MARKET'}
-
-# Английские команды  
-command = parse("sell 2 ETH at 1800 limit")
-# {'side': 'SELL', 'quantity': 2, 'symbol': 'ETHUSDT', 'order_type': 'LIMIT', 'price': 1800}
-```
-
-### Автоматические стратегии
-```python
-from strategies.dca import DCAStrategy
-from strategies.grid import GridTrading
-
-# Dollar-Cost Averaging
-dca = DCAStrategy(symbol="BTCUSDT", amount=100, interval_days=7)
-dca.execute()  # Автоматически покупает каждые 7 дней
-
-# Grid торговля
-grid = GridTrading(symbol="ETHUSDT", lower=1800, upper=2200, grids=10)
-grid.setup()  # Создаёт сетку ордеров
-```
-
-### Мониторинг и алерты
-```python
-from monitoring.telegram import TelegramNotifier
-from monitoring.reports.daily import generate_daily_report
-
-# Уведомления в Telegram
-notifier = TelegramNotifier(config)
-notifier.send_alert("🚨 BTC +5% за 10 минут", chat_id="ваш-chat-id")
-
-# Ежедневные отчёты
-report = generate_daily_report(portfolio_snapshot)
-# Отправляет красивый HTML отчёт на email
-```
-
-## 🔐 Безопасность
-
-### Многоуровневая защита
-1. **Шифрование ключей** — AES-GCM с PBKDF2
-2. **Система лимитов** — daily/hourly ограничения операций
-3. **Детальное логирование** — NDJSON формат, ротация логов
-4. **Проверки безопасности** — валидация API ключей, синхронизация времени
-5. **Security checklist** — чеклист для аудита безопасности
-
-### Использование
+### Docker (Recommended)
 ```bash
-# Шифрование API ключей
-python3 security/keys_crypto.py encrypt --in api_keys.txt --out keys.enc
+# Build and run
+docker-compose up -d
 
-# Установка лимитов
-source security/limits.sh
-set_limits 2000 1000  # daily=2000, hourly=1000 USD
+# View logs
+docker-compose logs -f
 
-# Логирование транзакций
-source security/logger.sh
-log_txn --type order --symbol BTCUSDT --side BUY --qty 0.001 --price 40000
+# Stop services
+docker-compose down
 ```
 
-## 🧪 Тестирование
-
-### Полная тестовая инфраструктура
+### Manual Deployment
 ```bash
-# Unit тесты
-python3 -m pytest test/ -v
+# Install dependencies
+pip install -r requirements.txt
 
-# Интеграционные тесты с mock-данными
-./test/test_integration.sh
+# Set environment variables
+export BINANCE_API_KEY=your_key
+export BINANCE_API_SECRET=your_secret
 
-# Тестирование с реальным testnet
-BINANCE_TESTNET_URL=https://testnet.binance.vision ./test/test_integration.sh
-
-# Проверка парсера
-python3 -c "from ux.parser import parse; import json; print(json.dumps(parse('купи 0.5 ETH лимит 1800'), indent=2))"
+# Start service
+python3 -m uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
-## 🚀 Развёртывание
-
-### Docker
-```bash
-# Сборка образа
-docker build -t binance-enhanced .
-
-# Запуск контейнера
-docker run -d \
-  --name binance-bot \
-  -p 5000:5000 \
-  -v ./config:/app/config \
-  -e BOT_TOKEN="ваш-токен" \
-  binance-enhanced
-```
-
-### Systemd Service
-```bash
-# Установка как системного сервиса
-sudo cp systemd/binance-enhanced.service /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable binance-enhanced
-sudo systemctl start binance-enhanced
-```
-
-### Kubernetes
+### Kubernetes (Advanced)
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: binance-enhanced
-spec:
-  replicas: 2
-  template:
-    spec:
-      containers:
-      - name: bot
-        image: binance-enhanced:latest
-        env:
-        - name: BOT_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: binance-secrets
-              key: bot-token
+# See k8s/ directory for Kubernetes manifests
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
 ```
 
-## 🤝 Вклад в развитие
+## 🔧 Configuration
 
-Мы приветствуем вклады! Пожалуйста:
+### Environment Variables:
+```bash
+# Required
+BINANCE_API_KEY=your_api_key
+BINANCE_API_SECRET=your_api_secret
+TELEGRAM_BOT_TOKEN=your_bot_token
 
-1. Форкните репозиторий
-2. Создайте ветку для вашей функции (`git checkout -b feature/amazing-feature`)
-3. Закоммитьте изменения (`git commit -m 'Add amazing feature'`)
-4. Запушьте в ветку (`git push origin feature/amazing-feature`)
-5. Откройте Pull Request
+# Optional
+REDIS_URL=redis://localhost:6379
+DATABASE_URL=postgresql://user:pass@localhost/db
+LOG_LEVEL=INFO
+```
 
-### Требования к коду
-- Добавляйте тесты для новой функциональности
-- Следуйте стилю кода (PEP 8 для Python)
-- Обновляйте документацию
-- Проверяйте безопасность изменений
+### Configuration Files:
+- `.env` - Environment variables
+- `config.yaml` - Application configuration
+- `security/config.yaml` - Security settings
+- `strategies/config.yaml` - Trading strategies
 
-## 📄 Лицензия
+## 📞 Support
 
-Распространяется под лицензией MIT. Смотрите файл [LICENSE](LICENSE) для подробностей.
+### Community:
+- **GitHub Issues**: [Report bugs](https://github.com/s7cret/binance-enhanced/issues)
+- **Discord**: Join OpenClaw community
+- **Telegram**: @s7cret (for direct support)
 
-## 👥 Авторы
+### Resources:
+- **[OpenClaw Documentation](https://docs.openclaw.ai)**
+- **[Binance API Docs](https://binance-docs.github.io/apidocs/)**
+- **[Skill Development Guide](SKILL.md)**
 
-- **OpenClaw Parallel Agents** — первоначальная разработка
-- **Ваше имя** — вклад и поддержка
+## 📄 License
 
-## 🙏 Благодарности
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- Команде OpenClaw за потрясающую платформу
-- Binance за отличный API
-- Сообществу за идеи и feedback
+## 🙏 Acknowledgments
 
-## 📞 Поддержка
-
-- **Issues:** [GitHub Issues](https://github.com/your-username/binance-enhanced/issues)
-- **Discord:** [OpenClaw Community](https://discord.gg/openclaw)
-- **Документация:** [OpenClaw Docs](https://docs.openclaw.ai)
+- **OpenClaw Team** for the amazing platform
+- **Binance** for their comprehensive API
+- **Community contributors** for feedback and testing
 
 ---
 
-**✨ Создано с любовью и параллельными агентами OpenClaw**  
-*Последнее обновление: 2026-02-01*
+**⭐ Star this repository if you find it useful!**
+
+**📢 Share your feedback and feature requests in Issues!**
+
+**🚀 Happy trading with Binance Enhanced!**

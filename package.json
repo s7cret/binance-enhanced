@@ -99,10 +99,10 @@
     }
   },
   "files": [
-    "SKILL_EN.md",
     "SKILL.md",
-    "README_EN.md",
+    "SKILL_RU.md",
     "README.md",
+    "README_RU.md",
     "DOCUMENTATION.md",
     "FAQ.md",
     "TROUBLESHOOTING.md",

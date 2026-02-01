@@ -2,15 +2,15 @@
 
 ## 📚 Language Versions
 
-### 🇬🇧 English Documentation
-- **[README_EN.md](README_EN.md)** - Complete English documentation
-- **[SKILL.md](SKILL.md)** - Detailed skill documentation (English)
+### 🇬🇧 English Documentation (Primary)
+- **[README.md](README.md)** - Complete English documentation (main)
+- **[SKILL.md](SKILL.md)** - Detailed skill documentation (English, main)
 - **[FAQ.md](FAQ.md)** - Frequently Asked Questions (English)
 - **[BEST_PRACTICES.md](BEST_PRACTICES.md)** - Best practices guide (English)
 
 ### 🇷🇺 Русская документация  
-- **[README.md](README.md)** - Полная русская документация
-- **[SKILL.md](SKILL.md)** - Детальная документация навыка (английский)
+- **[README_RU.md](README_RU.md)** - Полная русская документация
+- **[SKILL_RU.md](SKILL_RU.md)** - Детальная документация навыка (русский)
 - **[FAQ.md](FAQ.md)** - Часто задаваемые вопросы (английский)
 - **[BEST_PRACTICES.md](BEST_PRACTICES.md)** - Руководство по best practices (английский)
 
