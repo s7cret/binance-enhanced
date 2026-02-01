@@ -109,7 +109,7 @@ jobs:
   publish:
     needs: package
     runs-on: ubuntu-latest
-    if: github.event_name == 'release'
+    if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -132,24 +132,26 @@ jobs:
           fi
           
           # Upload to ClawHub API
-          curl -X POST \
+          echo "📤 Uploading to ClawHub API..."
+          RESPONSE=$(curl -s -w "%{http_code}" -o /tmp/clawhub-response.txt \
+            -X POST \
             -H "Authorization: Bearer $CLAWHUB_API_KEY" \
             -H "Content-Type: application/octet-stream" \
             --data-binary @binance-enhanced-${{ needs.package.outputs.version }}.tar.gz \
-            "https://api.clawhub.com/v1/skills/upload"
-            
-          echo "✅ Published to ClawHub!"
+            "https://api.clawhub.com/v1/skills/upload")
           
-      - name: Create GitHub Release
-        if: success()
-        run: |
-          echo "🏷️ Creating GitHub Release..."
-          gh release create ${{ needs.package.outputs.version }} \
-            --title "Binance Enhanced v${{ needs.package.outputs.version }}" \
-            --notes "Enhanced Binance trading skill with security, monitoring, and automation. See SKILL.md for full documentation." \
-            binance-enhanced-${{ needs.package.outputs.version }}.tar.gz
-        env:
-          GH_TOKEN: ${{ github.token }}
+          echo "📄 API Response (status: $RESPONSE):"
+          cat /tmp/clawhub-response.txt
+          echo ""
+          
+          if [ "$RESPONSE" = "200" ] || [ "$RESPONSE" = "201" ]; then
+            echo "✅ Successfully published to ClawHub!"
+            echo "🔗 Check: https://clawhub.com/package/binance-enhanced"
+          else
+            echo "❌ Failed to publish to ClawHub (HTTP $RESPONSE)"
+            echo "💡 Try manual upload: https://clawhub.com/upload"
+            exit 1
+          fi
 
   notify:
     needs: [validate, package, publish]
