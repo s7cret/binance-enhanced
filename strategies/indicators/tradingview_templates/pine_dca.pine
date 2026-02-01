@@ -1,0 +1,8 @@
+// TradingView Pine template for DCA alerts
+//@version=5
+indicator("DCA Template", overlay=true)
+// Example: simple moving average filter for DCA purchases
+sma = ta.sma(close, 50)
+plot(sma, color=color.blue)
+// Alert condition: price below sma
+alertcondition(close < sma, title='DCA Buy', message='Consider DCA buy')

@@ -1,0 +1,78 @@
+# config.yaml.example
+# Example configuration file for Binance skill. Contains profiles for different risk levels.
+
+# Global settings
+default_profile: conservative
+log_level: INFO
+trade_mode: paper # live | paper | dry-run
+recv_window: 5000 # ms
+api_base_urls:
+  spot: https://api.binance.com
+  futures: https://fapi.binance.com
+  testnet_spot: https://testnet.binance.vision
+
+profiles:
+  conservative:
+    description: "Low-risk defaults for users who want to minimise exposure. No leverage, small position sizes."
+    max_position_size_usd: 1000
+    allowed_order_types:
+      - MARKET
+      - LIMIT
+    leverage_allowed: false
+    max_daily_trades: 10
+    risk_per_trade_pct: 0.5
+    stop_loss_pct: 2.0
+
+  balanced:
+    description: "Balanced risk: moderate position sizes and selective leverage for experienced users."
+    max_position_size_usd: 5000
+    allowed_order_types:
+      - MARKET
+      - LIMIT
+      - STOP_LOSS
+      - TAKE_PROFIT
+    leverage_allowed: true
+    max_leverage: 5
+    max_daily_trades: 25
+    risk_per_trade_pct: 1.0
+    stop_loss_pct: 3.5
+
+  aggressive:
+    description: "High-risk configuration for professional traders. Larger positions, higher leverage. USE WITH CAUTION."
+    max_position_size_usd: 25000
+    allowed_order_types:
+      - MARKET
+      - LIMIT
+      - STOP_LOSS
+      - TAKE_PROFIT
+      - STOP_LOSS_LIMIT
+    leverage_allowed: true
+    max_leverage: 20
+    max_daily_trades: 100
+    risk_per_trade_pct: 2.5
+    stop_loss_pct: 6.0
+
+# Alerts and monitoring
+alerts:
+  critical_balance_threshold_usd: 50
+  notify_on_margin_call: true
+  webhook: "" # example: https://hooks.example.com/abcd
+
+# Order execution safety checks
+execution_checks:
+  require_confirmation: true
+  validate_symbol: true
+  check_balance_before_submit: true
+  enforce_lot_size: true
+  reject_if_recv_window_exceeded: true
+
+# Backtesting / simulation options
+simulation:
+  enabled: false
+  initial_balance_usd: 10000
+  historical_data_source: "local" # or "api"
+
+# Notes:
+# - Keep conservative profile as default for most users.
+# - Use "trade_mode: live" only after thorough testing.
+# - Do not store API keys in this file; use environment variables or secret managers.
